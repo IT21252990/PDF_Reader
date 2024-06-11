@@ -25,7 +25,7 @@ const upload = multer({
     }
 }).single('pdf');
 
-const uploadPDF = (req, res) => {
+const uploadPDF = async (req, res) => {
     upload(req, res, async (err) => {
         if (err) return res.status(400).send(err);
         const newPDF = new PDF({
