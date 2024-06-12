@@ -3,6 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { Link } from 'react-router-dom';
 
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 function Home() {
 
@@ -64,6 +65,7 @@ function Home() {
                 ))}
             </ul>
         </div>
+        <Footer/>
     </div>
    
   )
