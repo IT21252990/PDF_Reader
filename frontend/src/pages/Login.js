@@ -60,7 +60,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row min-h-screen px-6 lg:py-12 lg:px-8">
+      <div className="bg-image flex flex-col lg:flex-row min-h-screen px-6 lg:py-12 lg:px-8">
         {/* Left section - Logo and title */}
         <div className="flex flex-col items-center lg:items-start justify-center lg:ml-20 lg:w-1/2 lg:order-1">
           <img className="flex w-auto h-20 lg:h-52 lg:ml-20" src={logo} alt="PDF Reader" />

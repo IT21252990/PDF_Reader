@@ -45,3 +45,11 @@
   border:1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
+
+.bg-image {
+  background-image: url('./images/bg.jpg');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center center; /* Center the image */
+  min-height: 100vh; /* Ensure the div takes the full height of the viewport */
+}
