@@ -47,4 +47,14 @@ const getPDFs = async (req, res) => {
     }
 };
 
-module.exports = {uploadPDF , getPDFs};
+const getPDFById = async (req, res) => {
+    try {
+        const pdf = await PDF.findById(req.params.id);
+        if (!pdf) return res.status(404).send('PDF not found');
+        res.json(pdf);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};
+
+module.exports = {uploadPDF , getPDFs , getPDFById};
