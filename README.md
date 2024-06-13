@@ -39,6 +39,9 @@ The PDF Reader Application is built using the MERN stack (MongoDB, Express.js, R
    ![home_page_mini](https://github.com/IT21252990/PDF_Reader/assets/89300552/2d8340c1-9ebf-4525-9583-29af6eaf1048)
 5. **Read PDFs**: Users can open and read their saved PDF files directly in the browser, providing a convenient reading experience.
    ![pdf_viewer](https://github.com/IT21252990/PDF_Reader/assets/89300552/eb465f3a-711b-4378-abf3-984b06ef13a2)
+
+## Quick Demonstration
+https://github.com/IT21252990/PDF_Reader/assets/89300552/f9888378-4ffa-4c1d-832e-56b5f131db36
    
 ## Technologies Used
 
