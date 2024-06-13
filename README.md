@@ -31,14 +31,15 @@ The PDF Reader Application is built using the MERN stack (MongoDB, Express.js, R
 ### How It Works
 
 1. **Register**: Users can create a new account 
-   ![Register](./screenshots/register.png)
+   ![signup_page](https://github.com/IT21252990/PDF_Reader/assets/89300552/375e4a77-5209-40b6-8854-bb3c0b5b3a4b)
 2. **Login**: Users can log in to an existing account.
-   ![Login](./screenshots/login.png)
+  ![login_page](https://github.com/IT21252990/PDF_Reader/assets/89300552/b0d731ba-dea2-4a7f-9989-0cf709316b81)
 3. **Upload PDFs and Manage PDFs**: Once logged in, users can upload their PDF files to the application. Uploaded PDFs are saved to the user's account for easy access.
-   ![Home](./screenshots/home.png)
-4. **Read PDFs**: Users can open and read their saved PDF files directly in the browser, providing a convenient reading experience.
-   ![Read PDFs](./screenshots/read-pdfs.png)
-
+   ![home_page](https://github.com/IT21252990/PDF_Reader/assets/89300552/f5772569-17e5-4c17-95cd-68237428d845)
+   ![home_page_mini](https://github.com/IT21252990/PDF_Reader/assets/89300552/2d8340c1-9ebf-4525-9583-29af6eaf1048)
+5. **Read PDFs**: Users can open and read their saved PDF files directly in the browser, providing a convenient reading experience.
+   ![pdf_viewer](https://github.com/IT21252990/PDF_Reader/assets/89300552/eb465f3a-711b-4378-abf3-984b06ef13a2)
+   
 ## Technologies Used
 
 ### Frontend
