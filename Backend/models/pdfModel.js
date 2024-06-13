@@ -7,6 +7,11 @@ const PDFSchema = new mongoose.Schema({
         ref: 'User'
     },
 
+    title:{
+        type: String,
+        required: true
+    },
+
     filename: { 
         type: String, 
         required: true 

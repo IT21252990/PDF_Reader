@@ -28,13 +28,19 @@ const upload = multer({
 const uploadPDF = async (req, res) => {
     upload(req, res, async (err) => {
         if (err) return res.status(400).send(err);
-        const newPDF = new PDF({
-            user: req.user.id,
-            filename: req.file.filename,
-            path: req.file.path
-        });
-        await newPDF.save();
-        res.status(201).send('PDF uploaded');
+        if (!req.body.title) return res.status(400).send('Title is required');
+        try {
+            const newPDF = new PDF({
+                user: req.user.id,
+                filename: req.file.filename,
+                path: req.file.path,
+                title: req.body.title
+            });
+            await newPDF.save();
+            res.status(201).send('PDF uploaded');
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
     });
 };
 

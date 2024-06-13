@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link } from "react-router-dom";
-import "../App.css"
+import "../App.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 function Home() {
   const { user } = useAuthContext();
+  const [title, setTitle] = useState("");
   const [pdfs, setPDFs] = useState([]);
   const [file, setFile] = useState(null);
 
@@ -28,6 +29,7 @@ function Home() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("pdf", file);
+    formData.append("title", title);
 
     await fetch("/api/pdf/upload", {
       method: "POST",
@@ -53,8 +55,30 @@ function Home() {
       </div>
 
       <div className="grow">
-
-        <form onSubmit={onSubmit} className="flex justify-between max-w-lg p-5 mx-auto mt-10 bg-black rounded-full">
+        <form
+          onSubmit={onSubmit}
+          className="flex justify-between max-w-2xl p-5 mx-auto mt-10 bg-black rounded-full"
+        >
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium leading-6 text-[#1d0e30]"
+            >
+              Title :
+            </label>
+            <div className="mt-2">
+              <input
+                id="text"
+                name="text"
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                placeholder="Title"
+                required
+                className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#454545] sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
           <label className="block cursor-pointer">
             <input
               type="file"
@@ -78,15 +102,15 @@ function Home() {
           </button>
         </form>
         <div className="mx-5 my-10 overflow-y-scroll bg-yellow-300">
-             <ul>
-          {pdfs.map((pdf) => (
-            <li key={pdf._id}>
-              <Link to={`/pdf/${pdf._id}`}>{pdf.filename}</Link>
-            </li>
-          ))}
-        </ul>
+          <ul>
+            {pdfs.map((pdf) => (
+              <li key={pdf._id}>
+                <h1>{pdf.title}</h1>
+                <Link to={`/pdf/${pdf._id}`}>{pdf.filename}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
-       
       </div>
 
       <div className="grow-0">
