@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link } from "react-router-dom";
-
+import "../App.css"
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
@@ -47,25 +47,19 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-image">
       <div className="grow-0">
         <NavBar />
       </div>
 
-      <div className="grow bg-[#ffffff]">
+      <div className="grow">
 
-        <form onSubmit={onSubmit} className="p-5 mt-10 rounded-full flex bg-black mx-auto max-w-lg justify-between">
+        <form onSubmit={onSubmit} className="flex justify-between max-w-lg p-5 mx-auto mt-10 bg-black rounded-full">
           <label className="block cursor-pointer">
             <input
               type="file"
               onChange={onFileChange}
-              className="block cursor-pointer w-full text-sm text-slate-500
-      file:mr-4 file:py-2 file:px-4
-      file:rounded-full file:border-0
-      file:text-sm file:font-semibold
-      file:bg-violet-50 file:text-violet-700
-      hover:file:bg-violet-100
-    "
+              className="block w-full text-sm cursor-pointer text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 "
             />
           </label>
           <button
@@ -83,7 +77,7 @@ function Home() {
             Upload PDF
           </button>
         </form>
-        <div className="my-10 mx-5 overflow-y-scroll bg-yellow-300">
+        <div className="mx-5 my-10 overflow-y-scroll bg-yellow-300">
              <ul>
           {pdfs.map((pdf) => (
             <li key={pdf._id}>

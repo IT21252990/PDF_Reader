@@ -60,9 +60,9 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row min-h-screen px-6 lg:py-12 lg:px-8">
+      <div className="flex flex-col min-h-screen px-6 bg-image lg:flex-row lg:py-12 lg:px-8">
         {/* Right section - Logo and title */}
-        <div className="flex flex-col items-center lg:items-end justify-center lg:mr-20 lg:w-1/2 lg:order-2">
+        <div className="flex flex-col items-center justify-center lg:items-end lg:mr-20 lg:w-1/2 lg:order-2">
           <img
             className="flex w-auto h-20 lg:h-52 lg:mr-20"
             src={logo}
@@ -79,7 +79,7 @@ const Register = () => {
         </div>
 
         {/* Left section - Signup form */}
-        <div className="glass mx-0 px-5 pb-5 bg-white rounded-3xl shadow-2xl flex flex-col items-center lg:items-start lg:w-1/2 lg:order-1">
+        <div className="flex flex-col items-center px-5 pb-5 mx-0 bg-white shadow-2xl glass rounded-3xl lg:items-start lg:w-1/2 lg:order-1">
           <h2 className="mt-10 text-2xl font-bold leading-9 justify-center mx-auto tracking-tight text-center text-[#1d0e30]">
             Create a new Account
           </h2>

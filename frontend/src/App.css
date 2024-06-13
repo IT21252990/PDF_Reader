@@ -47,7 +47,7 @@
 }
 
 .bg-image {
-  background-image: url('./images/vecteezy_colorful-gradients-modern-and-clean-background_29590394-1.jpg');
+  background-image: url('./images/bg.png');
   background-size: cover; /* Ensure the image covers the entire background */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   background-position: center center; /* Center the image */
