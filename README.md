@@ -27,20 +27,16 @@ Welcome to the PDF Reader Application! This application allows users to easily m
 The PDF Reader Application is built using the MERN stack (MongoDB, Express.js, React, Node.js), ensuring a fast and reliable performance. We hope you enjoy using our application to manage and read your PDF documents!
 
 
-### How It Looks
+### How It Works
 
-#### Login Page
-![Login Page Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-#### Register Page
-![Register Page Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-#### Home Page
-![Home Page Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-#### PDF Viewer
-![PDF Viewer Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+1. **Register**: Users can create a new account 
+   ![Register](./screenshots/register.png)
+2. **Login**: Users can log in to an existing account.
+   ![Login](./screenshots/login.png)
+3. **Upload PDFs and Manage PDFs**: Once logged in, users can upload their PDF files to the application. Uploaded PDFs are saved to the user's account for easy access.
+   ![Home](./screenshots/home.png)
+4. **Read PDFs**: Users can open and read their saved PDF files directly in the browser, providing a convenient reading experience.
+   ![Read PDFs](./screenshots/read-pdfs.png)
 
 ## Technologies Used
 
