@@ -123,9 +123,10 @@ function Home() {
       <div className="grow">
         <form
           onSubmit={onSubmit}
-          className="flex items-center justify-between max-w-2xl p-5 mx-auto mt-10 bg-black rounded-full"
+          className="flex flex-col items-center justify-between max-w-2xl p-5 mx-auto mt-10 bg-black rounded-full"
         >
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <div className="flex items-center justify-center gap-3">
             <label
               htmlFor="title"
               className="block text-sm font-bold leading-6 text-white"
@@ -153,8 +154,6 @@ function Home() {
                 className="block w-full text-sm cursor-pointer text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 "
               />
             </label>
-            <span className="mt-2 text-white">Only PDF files are allowed. Maximum size: 30MB</span>
-            {error && <div className="mt-2 text-red-500">{error}</div>}
           </div>
           <button
             type="submit"
@@ -170,6 +169,11 @@ function Home() {
             </svg>
             Upload PDF
           </button>
+          </div>
+          <div>
+          <span className="mt-2 text-sm text-white">*Only PDF files are allowed. Maximum size: 30MB</span>
+          {error && <div className="mt-2 text-red-500">{error}</div>}
+          </div>
         </form>
 
         <div className="mx-5 my-10 overflow-y-scroll bg-yellow-300">
