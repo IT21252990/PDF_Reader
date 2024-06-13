@@ -1,6 +1,7 @@
 const PDF = require('../models/pdfModel');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: './uploads/',
@@ -63,4 +64,22 @@ const getPDFById = async (req, res) => {
     }
 };
 
-module.exports = {uploadPDF , getPDFs , getPDFById};
+const deletePDF = async (req, res) => {
+    try {
+        const pdf = await PDF.findById(req.params.id);
+        if (!pdf) return res.status(404).send('PDF not found');
+
+        // Delete file from filesystem
+        fs.unlink(pdf.path, async (err) => {
+            if (err) return res.status(500).send('Error deleting file');
+            
+            // Delete record from database
+            await PDF.findByIdAndDelete(req.params.id);
+            res.status(200).send('PDF deleted');
+        });
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};
+
+module.exports = { uploadPDF, getPDFs, getPDFById, deletePDF };
