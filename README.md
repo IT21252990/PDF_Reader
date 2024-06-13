@@ -2,7 +2,8 @@
 
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![logo](https://github.com/IT21252990/PDF_Reader/assets/89300552/e803f5be-1f69-4b57-acab-424ed3484c80)
+
 
 
 ## Your Digital Reading Hub!
