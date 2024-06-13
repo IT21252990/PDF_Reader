@@ -53,3 +53,19 @@
   background-position: center center; /* Center the image */
   min-height: 100vh; /* Ensure the div takes the full height of the viewport */
 }
+
+.table-wrapper {
+  overflow-y: scroll;
+  max-height: 350px;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.table-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.table-wrapper {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
