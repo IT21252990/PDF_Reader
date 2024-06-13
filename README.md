@@ -2,7 +2,7 @@
 
 
 
-![logo](https://github.com/IT21252990/PDF_Reader/assets/89300552/e803f5be-1f69-4b57-acab-424ed3484c80)
+![logo](https://github.com/IT21252990/PDF_Reader/assets/89300552/e279035d-7b09-4e28-b453-3e0844baf8cd)
 
 
 
