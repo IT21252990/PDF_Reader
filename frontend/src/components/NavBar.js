@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Hook to navigate programmatically
+import { useNavigate, Link } from "react-router-dom"; // Hook and component for navigation
 import { useLogout } from "../hooks/useLogout"; // Custom hook for handling logout logic
 import { useAuthContext } from "../hooks/useAuthContext"; // Custom hook for accessing authentication context
 import Swal from "sweetalert2"; // Library for displaying alerts
@@ -7,7 +7,7 @@ import logo from "../images/logo.png"; // Import logo image
 import userimg from "../images/user.png"; // Import user image
 import { Fragment } from "react"; // Fragment component for wrapping multiple elements
 import { Disclosure, Menu, Transition } from "@headlessui/react"; // Headless UI components for responsive navigation menu
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"; // Icons for the menu toggle button
+import { Bars3Icon, XMarkIcon, HomeIcon } from "@heroicons/react/24/outline"; // Icons for the menu toggle button
 
 const NavBar = () => {
   const { logout } = useLogout(); // Get the logout function from the custom hook
@@ -46,8 +46,18 @@ const NavBar = () => {
                     </div>
                   </div>
                 </div>
-                {/* User info and logout button (visible on larger screens) */}
-                <div className="hidden md:block">
+                {/* Home tab */}
+                <Link
+                    to="/"
+                    className="text-gray-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#1d0e30] hover:text-white transition duration-300"
+                  >
+                    <HomeIcon className="h-5 w-5 mr-1 inline-block -mt-0.5" aria-hidden="true" />
+                    Home
+                  </Link>
+                {/* Navigation links and user info */}
+                <div className="items-center hidden md:flex">
+                  
+                  {/* User info and logout button */}
                   <div className="flex items-center ml-4 md:ml-6">
                     <div className="text-sm font-medium leading-none text-[#1d0e30]">
                       {user.email} {/* Display the user's email */}
@@ -110,14 +120,14 @@ const NavBar = () => {
                 </div>
                 <div className="px-2 mt-3 space-y-1">
                   <div className="ml-3">
-                    <div className="text-sm mb-3 font-medium leading-none text-black">
+                    <div className="mb-3 text-sm font-medium leading-none text-black">
                       {user.email} {/* Display the user's email */}
                     </div>
                   </div>
-                  <hr></hr>
+                  <hr />
                   <a
                     href="/login"
-                    className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-red-500 hover:text-white"
+                    className="block px-3 py-2 text-base font-medium text-black rounded-md hover:bg-red-500 hover:text-white"
                     onClick={handleClick}
                   >
                     Sign out
