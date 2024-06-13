@@ -126,9 +126,9 @@ Replace `your-port-number` , `your-database`, `your-jwt-secret` with your config
 #### Start the server:
 
 ```bash
-npm start
+npm run dev
 ```
-The server should now be running on http://localhost:5000.
+The server should now be running on http://localhost:`your-port-number`.
 
 #### Setting Up the Client
 Navigate to the client directory and install the dependencies:
@@ -184,7 +184,7 @@ PDF_Reader/
 └── README.md
 ```
     
-## Authors
+## Author
 
 - [Kalinga Jayathilaka](https://www.linkedin.com/in/kalingajayathilaka/)
 
