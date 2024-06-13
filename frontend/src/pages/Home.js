@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"; // Importing SweetAlert2 for notifications
 import "../App.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { TrashIcon, EyeIcon } from "@heroicons/react/24/outline"; // Importing icons from Heroicons
 
 function Home() {
-  const { user } = useAuthContext();
-  const [title, setTitle] = useState("");
-  const [pdfs, setPDFs] = useState([]);
-  const [file, setFile] = useState(null);
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+  // State and variables initialization
+  const { user } = useAuthContext(); // Using custom hook to get authentication context
+  const [title, setTitle] = useState(""); // State for PDF title input field
+  const [pdfs, setPDFs] = useState([]); // State to store list of PDFs
+  const [file, setFile] = useState(null); // State to store selected PDF file
+  const [error, setError] = useState(""); // State to manage error messages
+  const navigate = useNavigate(); // Hook for navigation in React Router
 
+  // Effect to fetch PDFs when user changes
   useEffect(() => {
     if (user) {
       fetch("/api/pdf", {
@@ -24,6 +27,7 @@ function Home() {
     }
   }, [user]);
 
+  // Handle file selection for upload
   const onFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile && selectedFile.type !== "application/pdf") {
@@ -41,6 +45,7 @@ function Home() {
     setFile(selectedFile);
   };
 
+  // Handle form submission to upload PDF
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
@@ -52,6 +57,7 @@ function Home() {
     formData.append("pdf", file);
     formData.append("title", title);
 
+    // Sending POST request to upload PDF
     const response = await fetch("/api/pdf/upload", {
       method: "POST",
       headers: {
@@ -60,6 +66,7 @@ function Home() {
       body: formData,
     });
 
+    // Handling successful upload
     if (response.ok) {
       Swal.fire({
         title: "Success!",
@@ -68,7 +75,7 @@ function Home() {
         confirmButtonText: "OK",
       });
 
-      // Clear form inputs
+      // Clear form inputs and fetch updated PDF list
       setTitle("");
       setFile(null);
       setError("");
@@ -85,7 +92,9 @@ function Home() {
     }
   };
 
+  // Handle deletion of PDF file
   const onDelete = async (id) => {
+    // Confirmation dialog using SweetAlert2
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -96,12 +105,14 @@ function Home() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        // Sending DELETE request to delete PDF
         fetch(`/api/pdf/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }).then(() => {
+          // Fetch updated PDF list after deletion
           if (user) {
             fetch("/api/pdf", {
               headers: { Authorization: `Bearer ${user.token}` },
@@ -111,11 +122,12 @@ function Home() {
           }
         });
 
+        // Show success message after deletion
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
     });
   };
-
+  
   return (
     <div className="flex flex-col min-h-screen bg-image">
       <div className="grow-0">
@@ -125,7 +137,7 @@ function Home() {
       <div className="grow">
         <form
           onSubmit={onSubmit}
-          className="flex flex-col items-center justify-between max-w-2xl p-5 mx-auto mt-10 bg-black rounded-full"
+          className="flex flex-col items-center justify-between max-w-2xl p-5 mx-auto mt-10 bg-gray-900 rounded-full"
         >
           <div className="flex items-center justify-between gap-3 mb-2">
             <div className="flex items-center justify-center gap-3">
@@ -184,40 +196,28 @@ function Home() {
           </div>
         </form>
 
-        <div className="mx-5 my-10 max-h-[350px] overflow-hidden bg-yellow-300">
+        <div className="mx-5 my-10 max-h-[350px] overflow-hidden rounded-2xl">
           <div className="table-wrapper overflow-y-auto max-h-[350px]">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="sticky top-0 bg-gray-50">
+            <table className="w-full text-sm text-left text-gray-500 rounded-lg dark:text-gray-400">
+              <thead className="sticky top-0 text-xs text-gray-700 uppercase rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     #
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                  >
+                  <th scope="col" className="px-6 py-3 ">
                     File Title
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Created Date
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                  >
+                  <th scope="col" className="px-6 py-3 ">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {pdfs.length === 0 ? (
-                  <tr>
+                  <tr className="border-b odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700">
                     <td
                       colSpan="4"
                       className="px-6 py-4 text-sm text-center text-gray-500"
@@ -227,7 +227,10 @@ function Home() {
                   </tr>
                 ) : (
                   pdfs.map((pdf, index) => (
-                    <tr key={pdf._id}>
+                    <tr
+                      key={pdf._id}
+                      className="border-b odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700"
+                    >
                       <td className="px-6 py-4 whitespace-nowrap">
                         {index + 1}
                       </td>
@@ -240,14 +243,23 @@ function Home() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <Link
                           to={`/pdf/${pdf._id}`}
-                          className="text-indigo-600 hover:text-indigo-900"
+                          className="px-4 py-2 text-sm font-medium text-green-600 transition duration-300 rounded-lg hover:bg-green-600 hover:text-white"
                         >
-                          View
+                          <EyeIcon
+                            className="h-5 w-5 mr-1 inline-block -mt-0.5"
+                            aria-hidden="true"
+                          />
+                          View File
                         </Link>
+
                         <button
                           onClick={() => onDelete(pdf._id)}
-                          className="ml-4 text-red-600 hover:text-red-900"
+                          className="px-4 py-2 ml-4 text-sm font-medium text-red-600 transition duration-300 rounded-lg hover:bg-red-600 hover:text-white"
                         >
+                          <TrashIcon
+                            className="h-5 w-5 mr-1 inline-block -mt-0.5"
+                            aria-hidden="true"
+                          />
                           Delete
                         </button>
                       </td>
